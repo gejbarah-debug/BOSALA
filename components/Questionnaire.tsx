@@ -6,6 +6,7 @@ import type { Answers } from "@/lib/scoring";
 import { toArabicDigits } from "@/lib/format";
 import LikertScale from "./LikertScale";
 import Logo from "./Logo";
+import LiveClock from "./LiveClock";
 
 export default function Questionnaire({
   answers,
@@ -88,6 +89,10 @@ export default function Questionnaire({
           <span className="text-xs font-bold text-[#1c3f63]">
             الأمل والنور — بوصلة التخصص
           </span>
+        </div>
+
+        <div className="mb-2">
+          <LiveClock compact />
         </div>
 
         <div className="flex items-center justify-between text-xs font-medium text-slate-500">

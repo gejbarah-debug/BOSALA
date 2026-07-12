@@ -8,7 +8,7 @@ import {
   MANDATORY_NOTICE,
   SHORT_NAME,
 } from "@/lib/scoring";
-import { toArabicDigits } from "@/lib/format";
+import { toArabicDigits, formatKuwait } from "@/lib/format";
 import Logo from "./Logo";
 import BrandFooter from "./BrandFooter";
 
@@ -61,16 +61,23 @@ function AxisBars({
 export default function ResultsScreen({
   student,
   answers,
+  completedAt,
   onRestart,
 }: {
   student: Student;
   answers: Answers;
+  completedAt: string | null;
   onRestart: () => void;
 }) {
   const report = useMemo(
     () => computeReport(student, answers),
     [student, answers],
   );
+
+  const stamp = useMemo(() => {
+    const d = completedAt ? new Date(completedAt) : new Date();
+    return formatKuwait(d);
+  }, [completedAt]);
 
   const trackLabel =
     student.track === "science" ? "المسار العلمي" : "المسار الأدبي";
@@ -104,6 +111,12 @@ export default function ResultsScreen({
               <span className="font-bold">{trackLabel}</span>
             </div>
           </div>
+
+          <p className="mt-2.5 text-center text-[11px] leading-relaxed text-white/70">
+            أُجري الاستبيان: {stamp.dateStr}
+            <br />
+            {stamp.timeStr} — بتوقيت الكويت
+          </p>
         </header>
 
         {/* درجات المحاور */}

@@ -6,6 +6,7 @@ import { AXES, TOTAL_STATEMENTS } from "@/lib/questions";
 import { toArabicDigits } from "@/lib/format";
 import Logo from "./Logo";
 import BrandFooter from "./BrandFooter";
+import LiveClock from "./LiveClock";
 
 const TRACKS: { value: Track; label: string; hint: string }[] = [
   { value: "science", label: "علمي", hint: "رياضيات وعلوم" },
@@ -47,6 +48,8 @@ export default function IntroScreen({
           لطلبة الصف الثاني عشر — علمي وأدبي
         </p>
       </header>
+
+      <LiveClock />
 
       {/* آلية العمل */}
       <section className="mt-5 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-100">

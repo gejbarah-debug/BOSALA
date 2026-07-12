@@ -23,6 +23,7 @@ export default function Home() {
   const [step, setStep] = useState<Step>("intro");
   const [student, setStudent] = useState<Student | null>(null);
   const [answers, setAnswers] = useState<Answers>(emptyAnswers);
+  const [completedAt, setCompletedAt] = useState<string | null>(null);
 
   // استرجاع التقدم المحفوظ
   useEffect(() => {
@@ -33,10 +34,12 @@ export default function Home() {
           step?: Step;
           student?: Student | null;
           answers?: Answers;
+          completedAt?: string | null;
         };
         if (saved.answers) setAnswers({ ...emptyAnswers(), ...saved.answers });
         if (saved.student) setStudent(saved.student);
         if (saved.step && saved.student) setStep(saved.step);
+        if (saved.completedAt) setCompletedAt(saved.completedAt);
       }
     } catch {
       // تجاهل أي خطأ في القراءة
@@ -50,12 +53,12 @@ export default function Home() {
     try {
       localStorage.setItem(
         STORAGE_KEY,
-        JSON.stringify({ step, student, answers }),
+        JSON.stringify({ step, student, answers, completedAt }),
       );
     } catch {
       // تجاهل
     }
-  }, [mounted, step, student, answers]);
+  }, [mounted, step, student, answers, completedAt]);
 
   function handleStart(s: Student) {
     setStudent(s);
@@ -64,6 +67,8 @@ export default function Home() {
   }
 
   function handleComplete() {
+    // نسجّل لحظة إنهاء الاستبيان (تُعرض بتوقيت الكويت في التقرير)
+    setCompletedAt(new Date().toISOString());
     setStep("results");
     window.scrollTo({ top: 0 });
   }
@@ -76,6 +81,7 @@ export default function Home() {
   function handleRestart() {
     setAnswers(emptyAnswers());
     setStudent(null);
+    setCompletedAt(null);
     setStep("intro");
     try {
       localStorage.removeItem(STORAGE_KEY);
@@ -110,6 +116,7 @@ export default function Home() {
       <ResultsScreen
         student={student}
         answers={answers}
+        completedAt={completedAt}
         onRestart={handleRestart}
       />
     );
