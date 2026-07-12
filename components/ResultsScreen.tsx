@@ -88,7 +88,7 @@ export default function ResultsScreen({
             <Logo className="h-12 w-auto" />
           </div>
           <h1 className="mt-2 text-base font-extrabold">
-            مركز الأمل والنور للاستشارات
+            الأمل والنور للاستشارات
           </h1>
           <p className="mt-1 text-sm font-medium text-white/80">
             التقرير النهائي — بوصلة التخصص

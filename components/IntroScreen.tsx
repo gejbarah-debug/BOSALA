@@ -39,7 +39,7 @@ export default function IntroScreen({
       <header className="mt-6 rounded-3xl bg-white px-6 py-7 text-center shadow-sm ring-1 ring-slate-100">
         <Logo className="mx-auto h-24 w-auto" />
         <h1 className="mt-2 text-xl font-extrabold text-[#1c3f63]">
-          مركز الأمل والنور للاستشارات
+          الأمل والنور للاستشارات
         </h1>
         <div className="mx-auto my-3 h-1 w-16 rounded-full bg-[#e87a28]" />
         <p className="text-2xl font-extrabold text-[#e87a28]">بوصلة التخصص</p>

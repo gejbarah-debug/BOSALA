@@ -33,7 +33,7 @@ export default function BrandFooter() {
         ))}
       </div>
       <p className="mt-4 text-xs font-medium text-slate-400">
-        مركز الأمل والنور للاستشارات
+        الأمل والنور للاستشارات
       </p>
     </footer>
   );
