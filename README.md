@@ -1,7 +1,69 @@
-# BOSALA
+# بوصلة التخصص | Bosala — Specialization Compass
 
-> Project scaffold — replace this description with what BOSALA does.
+استبيان إلكتروني **عربي بالكامل (RTL)** ومُصمَّم للهواتف أولاً (mobile-first) يساعد طلبة **الصف الثاني عشر (علمي / أدبي)** في الكويت على اكتشاف التخصص الجامعي الأنسب لهم، بناءً على ميولهم وقدراتهم وسماتهم الشخصية.
 
-## Getting started
+A fully-Arabic, right-to-left, mobile-first questionnaire that helps Kuwaiti 12th-grade (science/literary) students discover their most suitable university major. Built with **Next.js 16 + React 19 + Tailwind CSS v4**.
 
-_Add setup and usage instructions here._
+---
+
+## آلية العمل / How it works
+
+- **٦ محاور**، كل محور يحتوي على **١٠ عبارات** (إجمالي **٦٠ عبارة**):
+  1. الميول المعرفية (Interests)
+  2. الاتجاهات المهنية (Career Orientations)
+  3. الكفاءات الذاتية (Self-Perceived Abilities)
+  4. السمات الشخصية (Personality)
+  5. التفضيل الأكاديمي (Academic Preference)
+  6. التوافق مع سوق العمل الكويتي (Employment Alignment)
+- تُجاب كل عبارة بـ **مقياس ليكرت الخماسي** (١ = لا ينطبق أبداً، ٥ = ينطبق بشدة).
+- تُجمع درجات كل محور (١٠ – ٥٠)، ويُحدَّد **أعلى محورين**، ومنهما يُستخرج التخصص الأنسب عبر جدول ربط معتمد لجامعة الكويت.
+- تُطبَّق **شروط تصحيح خاصة بالبيئة الكويتية** (توجيه المتفوقين علمياً للطب/الهندسة، والأدبيين للقانون/الإعلام، وكشف التعادل).
+- يخرج للطالب **تقرير نهائي** يتضمّن أعلى محورين، والتخصص الأنسب والبديل، والحد الأدنى التقديري للقبول، ونصائح، وتنبيهاً إلزامياً بأن النتيجة استرشادية.
+
+> **تنبيه:** هذا المقياس توجيهي استرشادي فقط، والقبول النهائي يخضع للمعدل المكافئ والأعداد المقررة من عمادة القبول والتسجيل بجامعة الكويت.
+
+---
+
+## التشغيل / Getting started
+
+```bash
+npm install
+npm run dev      # http://localhost:3000
+```
+
+للإنتاج / Production build:
+
+```bash
+npm run build
+npm run start
+```
+
+---
+
+## البنية / Project structure
+
+```
+app/
+  layout.tsx          # RTL + خط Cairo العربي + بيانات الوصف
+  page.tsx            # منسّق الشاشات (مقدمة / استبيان / نتيجة) + حفظ التقدم
+  globals.css         # Tailwind v4 + أنماط الطباعة
+components/
+  IntroScreen.tsx     # الاسم + المسار
+  Questionnaire.tsx   # صفحة لكل محور + شريط تقدم + تحقّق
+  LikertScale.tsx     # مقياس الإجابة من ١ إلى ٥
+  ResultsScreen.tsx   # التقرير النهائي + رسم المحاور + طباعة
+lib/
+  questions.ts        # المحاور الستة و٦٠ عبارة + مقياس ليكرت
+  scoring.ts          # محرّك التصحيح + جدول التخصصات + شروط الكويت
+  format.ts           # تحويل الأرقام إلى العربية
+```
+
+---
+
+## مزايا / Features
+
+- ✅ عربي بالكامل واتجاه RTL أصيل.
+- ✅ تصميم للهواتف أولاً، نظيف وسهل الاستخدام.
+- ✅ حساب تلقائي للدرجات واستخراج التخصص الأنسب.
+- ✅ حفظ التقدّم تلقائياً في المتصفح (localStorage) — لا تفقد إجاباتك عند التحديث.
+- ✅ تقرير قابل للطباعة أو الحفظ كـ PDF.

@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f1f5f9;
+  --foreground: #0f172a;
+  --brand: #0f766e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-cairo);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-cairo), system-ui, "Segoe UI", sans-serif;
+  min-height: 100dvh;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* شريط تمرير أنعم */
+* {
+  scrollbar-width: thin;
+}
+
+/* حركة لطيفة عند ظهور البطاقات */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.35s ease-out both;
+}
+
+/* أنماط الطباعة / حفظ PDF للتقرير */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff;
+  }
+  .print-area {
+    box-shadow: none !important;
+  }
+}
