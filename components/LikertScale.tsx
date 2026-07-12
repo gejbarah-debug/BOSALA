@@ -31,8 +31,8 @@ export default function LikertScale({
               "flex-1 aspect-square rounded-xl border text-base font-bold transition-all duration-150 select-none",
               "flex items-center justify-center",
               selected
-                ? "bg-teal-600 border-teal-600 text-white shadow-md scale-105"
-                : "bg-white border-slate-200 text-slate-500 hover:border-teal-400 hover:text-teal-600 active:scale-95",
+                ? "bg-[#e87a28] border-[#e87a28] text-white shadow-md scale-105"
+                : "bg-white border-slate-200 text-slate-500 hover:border-[#e87a28]/60 hover:text-[#e87a28] active:scale-95",
             ].join(" ")}
           >
             {toArabicDigits(opt.value)}

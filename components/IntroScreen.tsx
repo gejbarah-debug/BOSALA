@@ -4,25 +4,8 @@ import { useState } from "react";
 import type { Student, Track } from "@/lib/scoring";
 import { AXES, TOTAL_STATEMENTS } from "@/lib/questions";
 import { toArabicDigits } from "@/lib/format";
-
-function CompassIcon({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
-      <circle
-        cx="50"
-        cy="50"
-        r="46"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="4"
-        opacity="0.35"
-      />
-      <circle cx="50" cy="50" r="4" fill="currentColor" />
-      <polygon points="50,14 60,50 50,42 40,50" fill="currentColor" />
-      <polygon points="50,86 40,50 50,58 60,50" fill="currentColor" opacity="0.5" />
-    </svg>
-  );
-}
+import Logo from "./Logo";
+import BrandFooter from "./BrandFooter";
 
 const TRACKS: { value: Track; label: string; hint: string }[] = [
   { value: "science", label: "علمي", hint: "رياضيات وعلوم" },
@@ -51,59 +34,63 @@ export default function IntroScreen({
   }
 
   return (
-    <main className="mx-auto max-w-md px-4 pb-16">
-      {/* الترويسة */}
-      <header
-        className="mt-8 rounded-3xl px-6 py-8 text-center text-white shadow-lg"
-        style={{ background: "linear-gradient(180deg,#0d9488,#0f766e)" }}
-      >
-        <CompassIcon className="mx-auto h-20 w-20 text-white" />
-        <h1 className="mt-3 text-2xl font-extrabold leading-snug">
-          بوصلة التخصص
+    <main className="mx-auto max-w-md px-4 pb-12">
+      {/* ترويسة العلامة */}
+      <header className="mt-6 rounded-3xl bg-white px-6 py-7 text-center shadow-sm ring-1 ring-slate-100">
+        <Logo className="mx-auto h-24 w-auto" />
+        <h1 className="mt-2 text-xl font-extrabold text-[#1c3f63]">
+          مركز الأمل والنور للاستشارات
         </h1>
-        <p className="mt-1 text-sm font-medium text-teal-50">
+        <div className="mx-auto my-3 h-1 w-16 rounded-full bg-[#e87a28]" />
+        <p className="text-2xl font-extrabold text-[#e87a28]">بوصلة التخصص</p>
+        <p className="mt-1 text-sm font-medium text-slate-500">
           لطلبة الصف الثاني عشر — علمي وأدبي
         </p>
       </header>
 
       {/* آلية العمل */}
-      <section className="mt-6 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-100">
-        <h2 className="mb-3 text-base font-bold text-slate-800">
+      <section className="mt-5 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-100">
+        <h2 className="mb-3 text-base font-bold text-[#1c3f63]">
           كيف يعمل الاستبيان؟
         </h2>
         <ul className="space-y-2.5 text-sm text-slate-600">
           <li className="flex items-start gap-2">
-            <span className="mt-0.5 text-teal-600">◆</span>
+            <span className="mt-0.5 text-[#e87a28]">◆</span>
             <span>
-              يتكوّن من <b className="text-slate-800">{toArabicDigits(AXES.length)}</b> محاور،
-              وإجمالي <b className="text-slate-800">{toArabicDigits(TOTAL_STATEMENTS)}</b> عبارة.
+              يتكوّن من{" "}
+              <b className="text-[#1c3f63]">{toArabicDigits(AXES.length)}</b>{" "}
+              محاور، وإجمالي{" "}
+              <b className="text-[#1c3f63]">
+                {toArabicDigits(TOTAL_STATEMENTS)}
+              </b>{" "}
+              عبارة.
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="mt-0.5 text-teal-600">◆</span>
+            <span className="mt-0.5 text-[#e87a28]">◆</span>
             <span>
-              تُجاب كل عبارة بمقياس من <b className="text-slate-800">٥</b> نقاط
+              تُجاب كل عبارة بمقياس من <b className="text-[#1c3f63]">٥</b> نقاط
               (١ = لا ينطبق أبداً، ٥ = ينطبق بشدة).
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="mt-0.5 text-teal-600">◆</span>
+            <span className="mt-0.5 text-[#e87a28]">◆</span>
             <span>
               في النهاية نحسب أعلى محورين ونستخرج التخصص الجامعي الأنسب لك.
             </span>
           </li>
           <li className="flex items-start gap-2">
-            <span className="mt-0.5 text-teal-600">◆</span>
+            <span className="mt-0.5 text-[#e87a28]">◆</span>
             <span>المدة المتوقعة: ٧ – ١٠ دقائق تقريباً.</span>
           </li>
         </ul>
       </section>
 
       {/* بيانات الطالب */}
-      <section className="mt-6 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-100">
+      <section className="mt-5 rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-100">
         <label
           htmlFor="student-name"
-          className="mb-2 block text-sm font-bold text-slate-800"
+          className="mb-2 block text-sm font-bold text-[#1c3f63]"
         >
           اسم الطالب / الطالبة
         </label>
@@ -116,10 +103,10 @@ export default function IntroScreen({
             if (error) setError("");
           }}
           placeholder="اكتب اسمك هنا"
-          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-slate-800 outline-none transition focus:border-teal-500 focus:bg-white focus:ring-2 focus:ring-teal-100"
+          className="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-[#1c3f63] outline-none transition focus:border-[#e87a28] focus:bg-white focus:ring-2 focus:ring-[#e87a28]/20"
         />
 
-        <p className="mt-5 mb-2 text-sm font-bold text-slate-800">
+        <p className="mt-5 mb-2 text-sm font-bold text-[#1c3f63]">
           المسار الدراسي
         </p>
         <div className="grid grid-cols-2 gap-3">
@@ -136,14 +123,14 @@ export default function IntroScreen({
                 className={[
                   "rounded-xl border-2 px-4 py-3 text-center transition",
                   active
-                    ? "border-teal-600 bg-teal-50"
-                    : "border-slate-200 bg-white hover:border-teal-300",
+                    ? "border-[#e87a28] bg-[#e87a28]/10"
+                    : "border-slate-200 bg-white hover:border-[#e87a28]/50",
                 ].join(" ")}
               >
                 <span
                   className={[
                     "block text-lg font-extrabold",
-                    active ? "text-teal-700" : "text-slate-700",
+                    active ? "text-[#d3661a]" : "text-[#1c3f63]",
                   ].join(" ")}
                 >
                   {t.label}
@@ -165,16 +152,13 @@ export default function IntroScreen({
         <button
           type="button"
           onClick={start}
-          className="mt-6 w-full rounded-xl bg-teal-600 px-5 py-3.5 text-base font-bold text-white shadow-md transition hover:bg-teal-700 active:scale-[0.98]"
+          className="mt-6 w-full rounded-xl bg-[#e87a28] px-5 py-3.5 text-base font-bold text-white shadow-md transition hover:bg-[#d3661a] active:scale-[0.98]"
         >
           ابدأ الاستبيان
         </button>
       </section>
 
-      <p className="mt-6 px-2 text-center text-xs leading-relaxed text-slate-400">
-        هذا المقياس استرشادي لمساعدتك على التفكير في مستقبلك الأكاديمي، ولا يُغني
-        عن استشارة مكتب التوجيه وعمادة القبول بجامعة الكويت.
-      </p>
+      <BrandFooter />
     </main>
   );
 }

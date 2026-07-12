@@ -1,10 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { AXES, LIKERT, TOTAL_STATEMENTS } from "@/lib/questions";
+import { AXES, TOTAL_STATEMENTS } from "@/lib/questions";
 import type { Answers } from "@/lib/scoring";
 import { toArabicDigits } from "@/lib/format";
 import LikertScale from "./LikertScale";
+import Logo from "./Logo";
 
 export default function Questionnaire({
   answers,
@@ -78,8 +79,15 @@ export default function Questionnaire({
 
   return (
     <div className="mx-auto max-w-md px-4 pb-28">
-      {/* الترويسة الثابتة: التقدم + المحور + دليل المقياس */}
-      <div className="sticky top-0 z-10 -mx-4 bg-slate-100/95 px-4 pb-3 pt-4 backdrop-blur">
+      {/* الترويسة الثابتة */}
+      <div className="sticky top-0 z-10 -mx-4 bg-[#faf5ee]/95 px-4 pb-3 pt-4 backdrop-blur">
+        <div className="mb-2 flex items-center justify-center gap-2">
+          <Logo className="h-7 w-auto" />
+          <span className="text-xs font-bold text-[#1c3f63]">
+            الأمل والنور — بوصلة التخصص
+          </span>
+        </div>
+
         <div className="flex items-center justify-between text-xs font-medium text-slate-500">
           <span>
             المحور {toArabicDigits(axisIndex + 1)} من {toArabicDigits(total)}
@@ -88,18 +96,18 @@ export default function Questionnaire({
         </div>
         <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-slate-200">
           <div
-            className="h-full rounded-full bg-teal-600 transition-all duration-300"
+            className="h-full rounded-full bg-[#e87a28] transition-all duration-300"
             style={{ width: `${progress}%` }}
           />
         </div>
 
         <div className="mt-3 rounded-2xl bg-white p-3 shadow-sm ring-1 ring-slate-100">
           <div className="flex items-center gap-2">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-600 text-sm font-bold text-white">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#1c3f63] text-sm font-bold text-white">
               {toArabicDigits(axis.id)}
             </span>
             <div className="min-w-0">
-              <h2 className="truncate text-sm font-bold text-slate-800">
+              <h2 className="truncate text-sm font-bold text-[#1c3f63]">
                 {axis.title}
               </h2>
               <p className="truncate text-xs text-slate-400">{axis.subtitle}</p>
@@ -107,10 +115,10 @@ export default function Questionnaire({
           </div>
           <div className="mt-2.5 flex items-center justify-between gap-2 text-[11px] text-slate-400">
             <span className="flex items-center gap-1">
-              <b className="text-slate-500">١</b> لا ينطبق أبداً
+              <b className="text-[#e87a28]">١</b> لا ينطبق أبداً
             </span>
             <span className="flex items-center gap-1">
-              ينطبق بشدة <b className="text-slate-500">٥</b>
+              ينطبق بشدة <b className="text-[#e87a28]">٥</b>
             </span>
           </div>
         </div>
@@ -138,10 +146,10 @@ export default function Questionnaire({
               ].join(" ")}
             >
               <div className="mb-3 flex items-start gap-2">
-                <span className="mt-0.5 shrink-0 text-sm font-bold text-teal-600">
+                <span className="mt-0.5 shrink-0 text-sm font-bold text-[#e87a28]">
                   {toArabicDigits(i + 1)}.
                 </span>
-                <p className="text-sm font-medium leading-relaxed text-slate-700">
+                <p className="text-sm font-medium leading-relaxed text-[#1c3f63]">
                   {statement}
                 </p>
               </div>
@@ -151,7 +159,7 @@ export default function Questionnaire({
         })}
       </div>
 
-      {/* شريط التنقل السفلي الثابت */}
+      {/* شريط التنقل السفلي */}
       <div className="no-print fixed inset-x-0 bottom-0 z-10 border-t border-slate-200 bg-white/95 px-4 py-3 backdrop-blur">
         <div className="mx-auto flex max-w-md items-center gap-3">
           <button
@@ -167,8 +175,8 @@ export default function Questionnaire({
             className={[
               "flex-1 rounded-xl px-5 py-3 text-sm font-bold text-white shadow-md transition active:scale-[0.98]",
               isLast
-                ? "bg-emerald-600 hover:bg-emerald-700"
-                : "bg-teal-600 hover:bg-teal-700",
+                ? "bg-[#1c3f63] hover:bg-[#14304d]"
+                : "bg-[#e87a28] hover:bg-[#d3661a]",
             ].join(" ")}
           >
             {isLast ? "عرض النتيجة" : "المحور التالي"}

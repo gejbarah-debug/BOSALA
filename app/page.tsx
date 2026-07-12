@@ -88,7 +88,7 @@ export default function Home() {
   // شاشة تحميل بسيطة لتفادي وميض المحتوى قبل استرجاع الحالة
   if (!mounted) {
     return (
-      <div className="flex min-h-[100dvh] items-center justify-center text-teal-600">
+      <div className="flex min-h-[100dvh] items-center justify-center text-[#e87a28]">
         <span className="text-sm font-medium">جارٍ التحميل…</span>
       </div>
     );
