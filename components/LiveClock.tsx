@@ -47,15 +47,16 @@ export default function LiveClock({ compact = false }: { compact?: boolean }) {
   }
 
   return (
-    <div className="mt-4 flex items-center justify-center gap-2.5 rounded-2xl bg-white px-4 py-2.5 shadow-sm ring-1 ring-slate-100">
-      <ClockIcon className="h-5 w-5 shrink-0 text-[#e87a28]" />
+    <div className="mt-4 flex items-center justify-center gap-3 rounded-2xl border border-[#e87a28]/25 bg-white px-4 py-3 shadow-sm">
+      <ClockIcon className="h-7 w-7 shrink-0 text-[#e87a28]" />
       <div className="text-center leading-tight">
-        <div className="text-sm font-bold tabular-nums text-[#1c3f63]">
+        <div className="text-[11px] font-medium text-slate-400">
+          الوقت الآن · بتوقيت الكويت
+        </div>
+        <div className="text-lg font-extrabold tabular-nums text-[#1c3f63]">
           {timeStr}
         </div>
-        <div className="text-[11px] text-slate-400">
-          {dateStr} · بتوقيت الكويت
-        </div>
+        <div className="text-[11px] text-slate-500">{dateStr}</div>
       </div>
     </div>
   );
