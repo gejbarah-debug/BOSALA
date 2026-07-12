@@ -1,5 +1,7 @@
 # بوصلة التخصص | Bosala — Specialization Compass
 
+**🔗 النسخة المباشرة / Live demo:** https://gejbarah-debug.github.io/BOSALA/
+
 استبيان إلكتروني **عربي بالكامل (RTL)** ومُصمَّم للهواتف أولاً (mobile-first) يساعد طلبة **الصف الثاني عشر (علمي / أدبي)** في الكويت على اكتشاف التخصص الجامعي الأنسب لهم، بناءً على ميولهم وقدراتهم وسماتهم الشخصية.
 
 A fully-Arabic, right-to-left, mobile-first questionnaire that helps Kuwaiti 12th-grade (science/literary) students discover their most suitable university major. Built with **Next.js 16 + React 19 + Tailwind CSS v4**.
