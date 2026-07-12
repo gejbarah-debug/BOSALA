@@ -137,15 +137,16 @@ export const AXES: Axis[] = [
 // مقياس ليكرت الخماسي
 export interface LikertOption {
   value: number;
-  label: string;
+  label: string; // الوصف الكامل
+  short: string; // كلمة مختصرة تظهر أسفل الرقم
 }
 
 export const LIKERT: LikertOption[] = [
-  { value: 1, label: "لا ينطبق أبداً" },
-  { value: 2, label: "نادراً ما ينطبق" },
-  { value: 3, label: "ينطبق أحياناً" },
-  { value: 4, label: "ينطبق غالباً" },
-  { value: 5, label: "ينطبق بشدة" },
+  { value: 1, label: "لا ينطبق أبداً", short: "أبداً" },
+  { value: 2, label: "نادراً ما ينطبق", short: "نادراً" },
+  { value: 3, label: "ينطبق أحياناً", short: "أحياناً" },
+  { value: 4, label: "ينطبق غالباً", short: "غالباً" },
+  { value: 5, label: "ينطبق بشدة", short: "بشدة" },
 ];
 
 // موقع عبارة إجادة الإنجليزية (المحور الثالث، العبارة الثانية) — تستخدم في شروط التصحيح
