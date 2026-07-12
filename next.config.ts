@@ -8,6 +8,8 @@ const nextConfig: NextConfig = {
   output: "export", // تصدير ثابت (HTML/CSS/JS) مناسب للاستضافة على GitHub Pages
   trailingSlash: true,
   images: { unoptimized: true },
+  // نكشف مسار القاعدة للواجهة حتى تُحمّل الصور من المسار الصحيح على GitHub Pages
+  env: { NEXT_PUBLIC_BASE_PATH: basePath || "" },
   ...(basePath ? { basePath, assetPrefix: basePath } : {}),
 };
 

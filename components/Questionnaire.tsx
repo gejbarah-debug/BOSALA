@@ -82,7 +82,9 @@ export default function Questionnaire({
       {/* الترويسة الثابتة */}
       <div className="sticky top-0 z-10 -mx-4 bg-[#faf5ee]/95 px-4 pb-3 pt-4 backdrop-blur">
         <div className="mb-2 flex items-center justify-center gap-2">
-          <Logo className="h-7 w-auto" />
+          <span className="inline-flex h-7 w-7 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-slate-100">
+            <Logo className="h-full w-full p-0.5" />
+          </span>
           <span className="text-xs font-bold text-[#1c3f63]">
             الأمل والنور — بوصلة التخصص
           </span>

@@ -84,8 +84,8 @@ export default function ResultsScreen({
           className="mt-6 rounded-3xl px-6 py-6 text-center text-white shadow-lg"
           style={{ background: "linear-gradient(160deg,#245080,#152f4c)" }}
         >
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white shadow">
-            <Logo className="h-12 w-auto" />
+          <div className="mx-auto flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-white shadow">
+            <Logo className="h-full w-full p-1" />
           </div>
           <h1 className="mt-2 text-base font-extrabold">
             الأمل والنور للاستشارات
