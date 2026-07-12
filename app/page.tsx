@@ -6,6 +6,7 @@ import type { Answers, Student } from "@/lib/scoring";
 import IntroScreen from "@/components/IntroScreen";
 import Questionnaire from "@/components/Questionnaire";
 import ResultsScreen from "@/components/ResultsScreen";
+import { submitResult } from "@/lib/submit";
 
 type Step = "intro" | "quiz" | "results";
 
@@ -68,9 +69,15 @@ export default function Home() {
 
   function handleComplete() {
     // نسجّل لحظة إنهاء الاستبيان (تُعرض بتوقيت الكويت في التقرير)
-    setCompletedAt(new Date().toISOString());
+    const ts = new Date().toISOString();
+    setCompletedAt(ts);
     setStep("results");
     window.scrollTo({ top: 0 });
+
+    // إرسال النتيجة إلى قاعدة بيانات المركز (لا يعطّل عرض التقرير عند فشل الاتصال)
+    if (student) {
+      submitResult(student, answers, ts).catch(() => {});
+    }
   }
 
   function handleExit() {
